@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Items & Event Detail - TiketKita</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/homepage.css"> 
+    <link rel="stylesheet" href="../css/order-items.css"> 
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><a href="../pages/honepage.html" style="color: inherit;">Tiket<span>Kita</span></a></div>
+            <ul class="nav-links">
+                <li><a href="../pages/honepage.html#beranda">Beranda</a></li>
+                <li><a href="../pages/all-events.html">Event</a></li>
+                <li><a href="../pages/promo.html" class="promo-nav-link" id="navPromo">Promo</a></li>
+            </ul>
+
+            <div class="auth-buttons">
+                <!-- Tampilan Login -->
+                <div id="logged-in-menu" style="display: block; position: relative;">
+                    <div id="userProfileBtn" class="profile-trigger">
+                        <i class="fi fi-rr-user" style="color: var(--primary-color);"></i>
+                        <span id="display-username">Pengguna</span>
+                        <i class="fi fi-rr-angle-small-down"></i>
+                    </div>
+                    
+                    <div id="dropdownMenu" class="dropdown-content">
+                        <a href="#"><i class="fi fi-rr-ticket"></i> Tiket Saya</a>
+                        <a href="#"><i class="fi fi-rr-settings"></i> Setelan</a>
+                        <a href="#" id="logoutBtn" style="color: var(--primary-color);"><i class="fi fi-rr-exit"></i> Log out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER BANNER EVENT -->
+     
+    <header class="event-hero">
+        <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1540039155732-d68a9960241b?q=80&w=1920&auto=format&fit=crop');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="event-badge">🎟️ Festival Musik</div>
+            <h1>Soundrenaline 2026: The Next Level</h1>
+            <div class="event-meta">
+                <span><i class="fi fi-rr-calendar"></i> 12 - 13 Februari 2026</span>
+                <span><i class="fi fi-rr-marker"></i> Garuda Wisnu Kencana (GWK), Bali</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT: GABUNGAN EVENT DETAIL & ORDER ITEMS -->
+    <main class="order-main">
+        <div class="layout-grid">
+            
+            <!-- BAGIAN KIRI: Detail Event & Pemilihan Tiket -->
+            <div class="event-info-section">
+                
+                <!-- Deskripsi Event -->
+                <section class="info-card">
+                    <h2>Deskripsi Event</h2>
+                    <p>Bersiaplah untuk festival musik terbesar tahun ini! Soundrenaline 2026 kembali hadir dengan deretan artis papan atas. Nikmati pengalaman visual dan audio yang memukau selama dua hari penuh di venue ikonik GWK Bali.</p>
+                </section>
+
+                <section class="info-card">
+                    <h2>Pilih Tiket (Order Items)</h2>
+                    <div class="ticket-options">
+                        
+                        <!-- Tiket 1 -->
+                        <div class="ticket-item" onclick="selectTicket(this, 350000, 'Regular Day 1')">
+                            <div class="ticket-info">
+                                <h4>Regular - Day 1</h4>
+                                <p>Akses masuk festival hari pertama</p>
+                                <span class="price">Rp 350.000</span>
+                            </div>
+                            <div class="radio-circle"></div>
+                        </div>
+
+                        <!-- Tiket 2 -->
+                        <div class="ticket-item" onclick="selectTicket(this, 800000, 'VIP 2 Days Pass')">
+                            <div class="ticket-info">
+                                <h4>VIP - 2 Days Pass <span class="badge-hot">HOT</span></h4>
+                                <p>Akses 2 hari + VIP Area & Fast Track</p>
+                                <span class="price">Rp 800.000</span>
+                            </div>
+                            <div class="radio-circle"></div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Data Pemesan -->
+                <section class="info-card" id="buyerForm" style="display: none; animation: fadeIn 0.4s;">
+                    <h2>Detail Pemesan</h2>
+                    <form class="buyer-form">
+                        <div class="input-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" id="buyerName" placeholder="Masukkan nama sesuai KTP" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>Email</label>
+                                <input type="email" id="buyerEmail" placeholder="contoh@email.com" required>
+                            </div>
+                            <div class="input-group">
+                                <label>No. HP / WhatsApp</label>
+                                <input type="tel" id="buyerPhone" placeholder="08xxxxxxxxxx" required>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+            </div>
+
+            <!-- BAGIAN KANAN: Ringkasan Order & Checkout -->
+            <div class="order-summary-section">
+                <div class="checkout-card">
+                    <h3>Ringkasan Order</h3>
+                    
+                    <!-- Kondisi Belum Pilih Tiket -->
+                    <div id="emptyCart" class="empty-cart">
+                        <i class="fi fi-rr-shopping-cart"></i>
+                        <p>Belum ada tiket yang dipilih.</p>
+                    </div>
+
+                    <!-- Detail Order Items -->
+                    <div id="orderItems" style="display: none;">
+                        <div class="order-item-detail">
+                            <h4 id="summaryTicketName">Regular Day 1</h4>
+                            <div class="quantity-control">
+                                <button onclick="updateQty(-1)">-</button>
+                                <span id="ticketQty">1</span>
+                                <button onclick="updateQty(1)">+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="order-breakdown">
+                            <div class="breakdown-row">
+                                <span>Harga Tiket</span>
+                                <span id="summarySubtotal">Rp 350.000</span>
+                            </div>
+                            <div class="breakdown-row">
+                                <span>Pajak (10%)</span>
+                                <span id="summaryTax">Rp 35.000</span>
+                            </div>
+                            <div class="breakdown-row">
+                                <span>Biaya Layanan</span>
+                                <span>Rp 15.000</span>
+                            </div>
+                            
+                        </div>
+
+                        <!-- Input Promo -->
+
+                        <div class="total-price">
+                            <span>Total Pembayaran:</span>
+                            <strong id="summaryTotal">Rp 400.000</strong>
+                        </div>
+
+                        <button class="btn-buy" id="btnPay" onclick="processPayment()">Selesaikan Pembayaran</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal Konfirmasi -->
+    <div id="paymentModal" class="modal-overlay">
+        <div class="modal-content">
+            <i class="fi fi-sr-check-circle success-icon"></i>
+            <h2>Pesanan Berhasil!</h2>
+            <p>Tiket Anda sedang diproses. Silakan cek email Anda untuk e-ticket.</p>
+            <button class="btn-primary" onclick="window.location.href='../pages/honepage.html'" style="margin-top: 1rem; width: 100%;">Kembali ke Beranda</button>
+        </div>
+    </div>
+
+    <script src="../js/order-items.js"></script>
+</body>
+</html>

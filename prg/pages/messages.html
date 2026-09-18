@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRG — Messages</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  .msg-layout{ display:grid; grid-template-columns: 1fr 1.2fr; gap: 46px; margin-top: 40px; align-items:start; }
+  @media (max-width: 860px){ .msg-layout{ grid-template-columns:1fr; } }
+
+  .msg-form{
+    background:#fff; border: var(--panel-border); border-radius: var(--radius);
+    box-shadow: var(--panel-shadow); padding: 26px; position: sticky; top: 110px;
+  }
+  .msg-form h3{ font-family: var(--display); font-size:1.4rem; margin-bottom:16px; }
+  .msg-form label{ font-family: var(--comic); font-size:.75rem; display:block; margin-bottom:6px; margin-top:14px; }
+  .msg-form input, .msg-form textarea{
+    width:100%; border:3px solid var(--ink); border-radius:10px; padding:10px 12px;
+    font-family: var(--ui); font-size:.9rem; resize:vertical;
+  }
+  .msg-form input:focus, .msg-form textarea:focus{ outline:2px solid var(--blue); }
+  .msg-form button{ margin-top:18px; width:100%; justify-content:center; }
+
+  .msg-list{ display:flex; flex-direction:column; gap: 18px; }
+  .bubble{
+    position:relative;
+    background:#fff; border: var(--panel-border); border-radius: 18px;
+    box-shadow: var(--panel-shadow-sm); padding: 18px 22px;
+    animation: bubbleIn .4s ease;
+  }
+  @keyframes bubbleIn{ from{ opacity:0; transform: translateY(14px) scale(.96);} to{ opacity:1; transform:none; } }
+  .bubble .name{ font-family: var(--comic); font-size:.85rem; color: var(--red); }
+  .bubble p{ margin-top:6px; line-height:1.55; color:#374151; font-style:italic; }
+  .bubble .quote-mark{ font-family: var(--display); font-size:2rem; color: var(--gray); position:absolute; top:6px; right:14px; }
+  .empty-hint{ font-family: var(--ui); color:#9CA3AF; font-size:.9rem; }
+</style>
+</head>
+<body data-page="messages">
+
+<nav class="navbar">
+  <a href="../pages/home.html" class="nav-logo">PRG</a>
+  <ul class="nav-links">
+    <li><a href="../pages/home.html" data-page="home">Home</a></li>
+    <li><a href="../pages/gallery.html" data-page="gallery">Gallery</a></li>
+    <li><a href="../pages/timeline.html" data-page="timeline">Anu</a></li>
+    <li><a href="../pages/team.html" data-page="team">Orang</a></li>
+    <li><a href="../pages/messages.html" data-page="messages">Pesan</a></li>
+    <li><a href="../pages/funfacts.html" data-page="recommended">Recommended</a></li>
+    <li><a href="../pages/about.html" data-page="about">Saya</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+</nav>
+
+<section class="section">
+  <span class="eyebrow">Papan Pesan</span>
+  <h2 class="section-title">Tinggalkan <span class="hl">Pesan</span></h2>
+
+  <div class="msg-layout">
+    <form class="msg-form reveal from-left" id="msgForm">
+      <h3>Tulis Pesan </h3>
+      <label for="mName">Nama</label>
+      <input id="mName" type="text" placeholder="Nama kamu" required maxlength="30">
+      <label for="mText">Pesan</label>
+      <textarea id="mText" rows="4" placeholder="Tulis pesan singkat..." required maxlength="220"></textarea>
+      <button type="submit" class="btn">Kirim <i class="fa-solid fa-paper-plane"></i></button>
+    </form>
+
+    <div class="msg-list reveal from-right" id="msgList"></div>
+  </div>
+
+  <div class="center mt-40 reveal">
+    <a href="../pages/funfacts.html" class="btn yellow">Lanjut ke Rekomen <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <h2>Promosikan Aku</h2>
+  <p>Follow &amp; connect biar tambah uang.</p>
+  <div class="social-row">
+    <a class="ig" href="https://instagram.com" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a>
+    <a class="gh" href="https://github.com" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+    <a class="wa" href="https://tiktok.com/" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+  </div>
+  <p class="copyright">PRG © 2026 — dibuat dengan CINTAHHH.</p>
+</footer>
+
+<script src="../js/script.js"></script>
+<script>
+  // In-memory message store (resets each visit — hook up a backend/API for permanent storage)
+  let msgs = [
+    {name:'Nxx', text:'masih front end nggak bisa kasih pesan permanent, nanti di refresh balik lagi ke awal'},
+
+  ];
+
+  function renderMsgs(){
+    const list = document.getElementById('msgList');
+    list.innerHTML = '';
+    if(msgs.length === 0){
+      list.innerHTML = '<p class="empty-hint">Belum ada pesan. Jadilah yang pertama!</p>';
+      return;
+    }
+    msgs.slice().reverse().forEach(m=>{
+      const b = document.createElement('div');
+      b.className = 'bubble';
+      b.innerHTML = `<span class="quote-mark">"</span><span class="name">${escapeHTML(m.name)}</span><p>${escapeHTML(m.text)}</p>`;
+      list.appendChild(b);
+    });
+  }
+  function escapeHTML(str){
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  document.getElementById('msgForm').addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const name = document.getElementById('mName').value.trim();
+    const text = document.getElementById('mText').value.trim();
+    if(!name || !text) return;
+    msgs.push({name, text});
+    renderMsgs();
+    e.target.reset();
+  });
+
+  renderMsgs();
+</script>
+</body>
+</html>

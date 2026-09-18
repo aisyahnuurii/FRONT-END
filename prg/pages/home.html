@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRG — Home</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  .hero{
+    min-height: 100vh;
+    display:flex; align-items:center;
+    padding: 130px 6vw 60px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items:center; width:100%;
+  }
+  .hero-eyebrow{ font-family: var(--comic); color:var(--blue); letter-spacing:3px; font-size:.8rem; }
+  .hero h1{
+    font-family: var(--display);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 0.95;
+    margin-top: 10px;
+    color: var(--ink);
+  }
+  .hero h1 span{ color: var(--red); -webkit-text-stroke: 1.5px var(--ink); }
+  .hero .lawan{
+    font-family: var(--comic);
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    color: var(--ink);
+    margin-top: 18px;
+    background: var(--yellow);
+    display:inline-block;
+    padding: 8px 18px;
+    border-radius: 10px;
+    border: 3px solid var(--ink);
+    transform: rotate(-2deg);
+  }
+  .hero p.desc{ margin-top: 22px; max-width: 480px; line-height:1.6; color:#374151; }
+  .hero-cta{ margin-top: 34px; display:flex; gap:16px; flex-wrap:wrap; }
+
+  .photo-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .photo-grid .flat-photo:nth-child(1){ transform: rotate(-3deg); }
+  .photo-grid .flat-photo:nth-child(2){ transform: rotate(2deg); margin-top: 24px;}
+  .photo-grid .flat-photo:nth-child(3){ transform: rotate(2deg); margin-top: -24px;}
+  .photo-grid .flat-photo:nth-child(4){ transform: rotate(-2deg); }
+  .photo-grid .flat-photo:nth-child(5){ transform: rotate(3deg); margin-top: 24px;}
+  .photo-grid .flat-photo:nth-child(6){ transform: rotate(-1deg); margin-top: -24px;}
+
+  .zap{
+    position:absolute; font-family: var(--comic); font-size: 2.4rem; color: var(--yellow);
+    -webkit-text-stroke: 1.5px var(--ink);
+    top: -10px; right: 4vw; transform: rotate(12deg);
+    pointer-events:none;
+  }
+
+  /* teaser zigzag */
+  .teaser-visual{
+    aspect-ratio: 16/11; border-radius: var(--radius); border: var(--panel-border);
+    box-shadow: var(--panel-shadow); display:flex; align-items:center; justify-content:center;
+    font-family: var(--comic); color:#fff; font-size:1.4rem; text-align:center; padding: 20px;
+  }
+  .teaser-text h3{ font-family: var(--display); font-size: clamp(1.6rem,4vw,2.4rem); margin-bottom: 14px; }
+  .teaser-text p{ line-height:1.7; color:#374151; margin-bottom: 20px; }
+</style>
+</head>
+<body data-page="home">
+
+<nav class="navbar">
+  <a href="../pages/home.html" class="nav-logo">PRG</a>
+  <ul class="nav-links">
+    <li><a href="../pages/home.html" data-page="home">Home</a></li>
+    <li><a href="../pages/gallery.html" data-page="gallery">Gallery</a></li>
+    <li><a href="../pages/timeline.html" data-page="timeline">Anu</a></li>
+    <li><a href="../pages/team.html" data-page="team">Orang</a></li>
+    <li><a href="../pages/messages.html" data-page="messages">Pesan</a></li>
+    <li><a href="../pages/about.html" data-page="about">Saya</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+</nav>
+
+<section class="hero">
+  <div class="halftone"></div>
+  <div class="hero-grid">
+    <div class="reveal from-left">
+      <span class="hero-eyebrow"> coba coba </span>
+      <h1>PR<span>G</span></h1>
+      <div class="lawan">Saya akan lawan!</div>
+      <p class="desc">foto disembunyikan karena privasi</p>
+      <div class="hero-cta">
+        <a href="../pages/gallery.html" class="btn">Kepo? <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="../pages/timeline.html" class="btn outline">Lihat Anu</a>
+      </div>
+    </div>
+    <div class="reveal from-right" style="position:relative;">
+      <span class="zap">DAP!</span>
+      <div class="photo-grid" id="photoGrid"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="halftone"></div>
+  <span class="eyebrow">Zona Alay</span>
+  <h2 class="section-title">Foto Kita <span class="hl">Blur</span></h2>
+
+  <div class="zigzag mt-40">
+    
+    <!-- GALERI FOTO -->
+    <div class="zig-row">
+      <div class="reveal from-left">
+        <div class="teaser-visual" style="padding:0; overflow:hidden;">
+          <img src="../foto/7.jpg" alt="Galeri Foto" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
+      </div>
+      <div class="reveal from-right teaser-text">
+        <h3>Gallery</h3>
+        <p>Kumpulan momen yang disengaja diambil buat aib terbanyak</p>
+        <a href="../pages/gallery.html" class="btn">Buka Gallery</a>
+      </div>
+    </div>
+
+    <!-- PERJALANAN -->
+    <div class="zig-row">
+      <div class="reveal from-left">
+        <div class="teaser-visual" style="padding:0; overflow:hidden;">
+          <img src="../foto/8.jpg" alt="Perjalanan" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
+      </div>
+      <div class="reveal from-right teaser-text">
+        <h3>Anu</h3>
+        <p>Dari ujung mata hingga ujung hati muuach</p>
+        <p>maaf kalau nggak rapi</p>
+        <a href="../pages/timeline.html" class="btn blue">pengen lihat</a>
+      </div>
+    </div>
+
+    <!-- TIM -->
+    <div class="zig-row">
+      <div class="reveal from-left">
+        <div class="teaser-visual" style="padding:0; overflow:hidden;">
+          <img src="../foto/9.jpg" alt="Tim" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
+      </div>
+      <div class="reveal from-right teaser-text">
+        <h3>Orang</h3>
+        <p>KLIK AJA, tapi masih 3</p>
+        <a href="../pages/team.html" class="btn yellow">tambah tua</a>
+      </div>
+    </div>
+
+    <!-- PESAN -->
+    <div class="zig-row">
+      <div class="reveal from-left">
+        <div class="teaser-visual" style="padding:0; overflow:hidden;">
+          <img src="../foto/10.jpg" alt="Pesan" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
+      </div>
+      <div class="reveal from-right teaser-text">
+        <h3>Pesan</h3>
+        <p>curhatan saya</p>
+        <a href="../pages/messages.html" class="btn green">ANDA HANYA BISA LIHAT</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <h2>Promosikan Aku</h2>
+  <p>Follow &amp; connect biar tambah uang.</p>
+  <div class="social-row">
+    <a class="ig" href="https://instagram.com" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a>
+    <a class="gh" href="https://github.com" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+    <a class="wa" href="https://tiktok.com/" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+  </div>
+  <p class="copyright">PRG © 2026 — dibuat dengan hati yang terdalam</p>
+</footer>
+
+<script src="../js/script.js"></script>
+<script>
+  // Daftar foto dan link tujuannya (Gallery, Timeline, Team)
+  const photos = [
+    { src: '../foto/1.png', link: "https://instagram.com/dheaa.p" },
+    { src: '../foto/2.png', link: 'https://instagram.com/nabilanindyaaa' },
+    { src: '../foto/3.png', link: 'https://instagram.com/keysyamalia' },
+    { src: '../foto/4.png', link: 'https://instagram.com/nin.nashwa' },
+    { src: '../foto/5.png', link: 'https://instagram.com/aisyahnuurii' },
+    { src: '../foto/6.png', link: 'https://instagram.com/rr.rraz' }
+  ];
+
+  const grid = document.getElementById('photoGrid');
+
+  photos.forEach(p => {
+    const div = document.createElement('a');
+    div.href = p.link;
+    div.className = 'flat-photo';
+    
+    // Hapus background warna, biarkan bingkai CSS (.flat-photo) yang bekerja
+    div.style.background = 'transparent';
+
+    // Masukkan tag img, bukan SVG dan teks
+    // object-fit: cover memastikan foto mengisi bingkai tanpa gepeng
+    div.innerHTML = `<img src="${p.src}" alt="Foto" style="width: 100%; height: 100%; object-fit: cover; display: block;">`;
+
+    grid.appendChild(div);
+  });
+</script>
+</body>
+</html>

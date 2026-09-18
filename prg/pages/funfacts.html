@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRG — Fun Facts</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  .facts-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: 26px; margin-top: 44px; }
+  @media (max-width:860px){ .facts-grid{ grid-template-columns:1fr; } }
+  .fact-card{
+    border-radius: var(--radius); border: var(--panel-border); box-shadow: var(--panel-shadow);
+    padding: 30px 22px; text-align:center; background:#fff; cursor:pointer;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .fact-card:hover{ transform: translateY(-8px) scale(1.03); box-shadow: 11px 11px 0 var(--ink); }
+  .fact-card .icon{ font-size:2.8rem; }
+  .fact-card h3{ font-family: var(--display); font-size:1.25rem; margin-top:14px; }
+  .fact-card p{ margin-top:8px; color:#374151; font-size:.88rem; line-height:1.5; }
+  .fact-card .go{ margin-top: 14px; font-family: var(--comic); font-size:.75rem; }
+  .fact-card.red .go{ color: var(--red); } .fact-card.blue .go{ color: var(--blue); } .fact-card.pink .go{ color: var(--pink); }
+
+  /* mini modal for fun fact detail */
+  .fact-modal-overlay{
+    position:fixed; inset:0; background: rgba(15,23,42,0.72); z-index:900;
+    display:none; align-items:center; justify-content:center; padding: 20px;
+  }
+  .fact-modal-overlay.open{ display:flex; }
+  .fact-modal{
+    background:#fff; border: var(--panel-border); border-radius: var(--radius);
+    box-shadow: var(--panel-shadow); max-width: 460px; width:100%; padding: 28px; position:relative;
+    animation: popIn .35s ease;
+  }
+  @keyframes popIn{ from{ transform: scale(.85); opacity:0;} to{ transform:scale(1); opacity:1; } }
+  .fact-modal h3{ font-family: var(--display); font-size:1.4rem; margin-bottom:10px; }
+  .fact-modal p{ color:#374151; line-height:1.6; }
+  .fact-modal .modal-close{
+    position:absolute; top:14px; right:14px; background: var(--red); color:#fff;
+    border: 3px solid var(--ink); width:34px; height:34px; border-radius:50%; cursor:pointer;
+  }
+</style>
+</head>
+<body data-page="funfacts">
+
+<nav class="navbar">
+  <a href="../pages/home.html" class="nav-logo">PRG</a>
+  <ul class="nav-links">
+    <li><a href="../pages/home.html" data-page="home">Home</a></li>
+    <li><a href="../pages/gallery.html" data-page="gallery">Gallery</a></li>
+    <li><a href="../pages/timeline.html" data-page="timeline">Anu</a></li>
+    <li><a href="../pages/team.html" data-page="team">Orang</a></li>
+    <li><a href="../pages/messages.html" data-page="messages">Pesan</a></li>
+    <li><a href="../pages/about.html" data-page="about">Saya</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+</nav>
+
+<section class="section">
+  <span class="eyebrow">Recommended</span>
+  <h2 class="section-title">Punya <span class="hl">Anu</span></h2>
+  <p style="margin-top:12px; max-width:560px; color:#374151;">masih tahap pengembangan</p>
+
+  <div class="facts-grid" id="factsGrid"></div>
+</section>
+
+<div class="fact-modal-overlay" id="factOverlay">
+  <div class="fact-modal">
+    <button class="modal-close" id="factClose"><i class="fa-solid fa-xmark"></i></button>
+    <h3 id="factTitle"></h3>
+    <p id="factText"></p>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <h2>Promosikan Aku</h2>
+  <p>Follow &amp; connect biar tambah uang.</p>
+  <div class="social-row">
+    <a class="ig" href="https://instagram.com" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a>
+    <a class="gh" href="https://github.com" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+    <a class="wa" href="https://tiktok.com/" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+  </div>
+  <p class="copyright">PRG © 2026 — dibuat dengan CINTAHHH.</p>
+</footer>
+
+<script src="../js/script.js"></script>
+<script>
+  const facts = [
+    {cls:'red', icon:'$', title:'Lagu Favorit', text:'-- IGNORE --'},
+    {cls:'blue', icon:'[0]', title:'AIB paling banyak', text:'-- IGNORE --'},
+    {cls:'pink', icon:':]', title:'Whislist', text:'-- IGNORE --'},
+  ];
+  const grid = document.getElementById('factsGrid');
+  facts.forEach(f=>{
+    const card = document.createElement('div');
+    card.className = `fact-card ${f.cls} reveal pop`;
+    card.innerHTML = `<div class="icon">${f.icon}</div><h3>${f.title}</h3><p>kalau dipencet juga sama aja</p><div class="go">Baca selengkapnya →</div>`;
+    card.addEventListener('click', ()=> openFact(f));
+    grid.appendChild(card);
+  });
+  initReveal();
+
+  const overlay = document.getElementById('factOverlay');
+  function openFact(f){
+    document.getElementById('factTitle').textContent = f.icon + ' ' + f.title;
+    document.getElementById('factText').textContent = f.text;
+    overlay.classList.add('open');
+  }
+  document.getElementById('factClose').addEventListener('click', ()=> overlay.classList.remove('open'));
+  overlay.addEventListener('click', (e)=>{ if(e.target === overlay) overlay.classList.remove('open'); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') overlay.classList.remove('open'); });
+</script>
+</body>
+</html>

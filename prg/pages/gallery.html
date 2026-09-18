@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRG — Gallery</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/gallery.css" />
+  <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<body>
+
+  <nav class="navbar">
+    <a href="../pages/home.html" class="nav-logo">PRG</a>
+    <ul class="nav-links">
+      <li><a href="../pages/home.html">Home</a></li>
+      <li><a href="../pages/gallery.html" class="active">Gallery</a></li>
+      <li><a href="../pages/timeline.html">Anu</a></li>
+      <li><a href="../pages/team.html">Orang</a></li>
+      <li><a href="../pages/messages.html">Pesan</a></li>
+      <li><a href="../pages/about.html">Saya</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </nav>
+
+  <section class="section">
+    <div class="center">
+      <span class="eyebrow">Galeri</span>
+      <h2 class="section-title">Klik dan putar <span class="hl">foto</span> di bawah</h2>
+      <p class="mt-16" style="max-width:600px; margin:16px auto 40px;">
+        kalau nggak bisa segera hubungi saya.
+    </div>
+
+    <!-- Container 3D Canvas -->
+    <div style="height:600px; position:relative; max-width:1200px; margin:0 auto;">
+      <canvas id="infinite-grid-menu-canvas"></canvas>
+      <h2 id="face-title" class="face-title inactive">Bukti Sejarah</h2>
+      <p id="face-description" class="face-description inactive">Deskripsi akan muncul di sini.</p>
+      <button id="face-action" class="action-button inactive" aria-label="Lihat detail">
+        <span class="action-button-icon">&#x2197;</span>
+      </button>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <h2>Promosikan Aku</h2>
+    <p>Follow &amp; connect biar tambah uang.</p>
+    <div class="social-row">
+      <a class="ig" href="https://instagram.com" target="_blank">Instagram</a>
+      <a class="gh" href="https://github.com" target="_blank">GitHub</a>
+      <a class="wa" href="https://tiktok.com/" target="_blank">TikTok</a>
+    </div>
+    <p class="copyright">PRG © 2026 — dibuat dengan hati yang terdalam</p>
+  </footer>
+
+  <!-- Load semua script dari local -->
+  <script src="../js/gl-matrix-min.js"></script>
+  <script src="../js/InfiniteMenu.js"></script>
+  <script src="../js/gallery.js"></script>
+</body>
+</html>

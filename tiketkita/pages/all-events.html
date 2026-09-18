@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jelajahi Semua Event - TiketKita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homepage.css">
+    <link rel="stylesheet" href="../css/all-events.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><a href="../pages/honepage.html" style="color: inherit;">Tiket<span>Kita</span></a></div>
+            <ul class="nav-links">
+                <li><a href="../pages/honepage.html">Beranda</a></li>
+                <li><a href="../pages/all-events.html" class="active" style="color: var(--primary-color);">Event</a></li>
+                <li><a href="../pages/promo.html" class="promo-nav-link" id="navPromo">Promo</a></li>
+            </ul>
+
+            <div class="auth-buttons">
+                <!-- Tampilan Guest -->
+                <div id="guest-menu" class="user-menu">
+                    <i class="fi fi-sr-circle-user user-icon"></i>
+                    <div class="user-dropdown">
+                        <a href="../pages/authentication.html">Masuk</a>
+                        <a href="../pages/registration.html">Daftar</a>
+                    </div>
+                </div>
+
+                <!-- Tampilan Logged In -->
+                <div id="logged-in-menu" style="display: none; position: relative;">
+                    <div id="userProfileBtn" style="display: flex; align-items: center; gap: 10px; color: var(--text-main); font-weight: 600; cursor: pointer; padding: 8px 14px; border-radius: 12px; border: 1px solid var(--border-color); user-select: none; transition: 0.3s;">
+                        <i class="fi fi-rr-user" style="color: var(--primary-color);"></i>
+                        <span id="display-username">NamaUser</span>
+                    </div>
+                    <div id="dropdownMenu" style="display: none; position: absolute; right: 0; top: 125%; background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; min-width: 160px; z-index: 1000; overflow: hidden;">
+                        <a href="#" id="logoutBtn" style="display: flex; align-items: center; gap: 10px; padding: 12px 16px; color: var(--primary-color); font-size: 0.9rem; font-weight: 600; border-bottom: 1px solid var(--border-color); text-decoration: none;">
+                            <i class="fi fi-rr-exit"></i> Log out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="all-events-main">
+        
+        <div class="page-header">
+            <h1>Jelajahi <span style="color: var(--primary-color);">Semua Event</span></h1>
+            <p>Temukan acara favoritmu berdasarkan kategori, lokasi, dan tanggal.</p>
+        </div>
+
+        <!-- Filter Panel -->
+        <div class="filter-panel">
+            <div class="filter-group">
+                <label>Kategori</label>
+                <select id="filterCategory">
+                    <option value="all">Semua Kategori</option>
+                    <option value="konser">Konser</option>
+                    <option value="festival">Festival</option>
+                    <option value="seminar">Seminar & Edukasi</option>
+                    <option value="olahraga">Olahraga</option>
+                    <option value="pameran">Pameran</option>
+                    <option value="kuliner">Kuliner</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Lokasi</label>
+                <select id="filterLocation">
+                    <option value="all">Semua Kota</option>
+                    <option value="jakarta">Jakarta</option>
+                    <option value="bandung">Bandung</option>
+                    <option value="bali">Bali</option>
+                    <option value="surabaya">Surabaya</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Urutkan</label>
+                <select id="filterSort">
+                    <option value="terbaru">Paling Baru (Tanggal)</option>
+                    <option value="populer">Paling Populer</option>
+                    <option value="termurah">Harga: Rendah ke Tinggi</option>
+                    <option value="termahal">Harga: Tinggi ke Rendah</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Event Grid Display -->
+        <div class="event-grid-display" id="eventsContainer"></div>
+
+        <div id="emptyState" style="display: none; text-align: center; padding: 4rem 0; color: var(--text-muted);">
+            <i class="fi fi-rr-sad-tear" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+            <h3>Oops, Event Tidak Ditemukan</h3>
+            <p>Coba gunakan kombinasi filter kategori atau lokasi yang lain.</p>
+        </div>
+    </main>
+
+    <script src="../js/all-events.js"></script>
+</body>
+</html>

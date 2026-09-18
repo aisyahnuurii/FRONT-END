@@ -1,0 +1,275 @@
+body {
+        background-color: var(--bg-main, #0c0e14);
+        color: var(--text-main, #f0eff6);
+        padding-top: 80px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .tiket-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .page-header {
+        margin-bottom: 2rem;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #fff 0%, #ff3e5e 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    /*tab filter*/
+    .tiket-tabs {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 1rem;
+    }
+
+    .tiket-tab {
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius: 8px;
+    }
+
+    .tiket-tab.active {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .tiket-tab:hover:not(.active) {
+        color: var(--primary-color);
+    }
+
+    .tiket-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 1.5rem;
+    }
+    /*kartu tiket*/
+    .tiket-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    /*header kartu tiket*/
+    .tiket-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .tiket-header {
+        background: linear-gradient(135deg, #ff3e5e, #ff6b8a);
+        padding: 1rem 1.5rem;
+        color: white;
+    }
+
+    .tiket-header h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .tiket-header p {
+        font-size: 0.8rem;
+        opacity: 0.9;
+    }
+    /*bodyy kartu tiker */
+    .tiket-body {
+        padding: 1.5rem;
+    }
+
+    .tiket-info {
+        margin-bottom: 1rem;
+    }
+
+    .tiket-info-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .tiket-info-label {
+        color: var(--text-muted);
+    }
+
+    .tiket-info-value {
+        font-weight: 600;
+        color: var(--text-main);
+    }
+    /*staus*/
+    .tiket-status {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    .status-paid {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .status-pending {
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .status-expired {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .tiket-footer {
+        padding: 1rem 1.5rem;
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    /*tombol download*/
+    .btn-download {
+        background: transparent;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .btn-download:hover {
+        background: var(--primary-color);
+        color: white;
+    }
+    /*tombol detial tiket*/
+    .btn-detail {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--text-muted);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .btn-detail:hover {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
+/*empty state*/
+    .empty-state {
+        text-align: center;
+        padding: 4rem;
+        background: var(--bg-surface);
+        border-radius: 20px;
+        border: 1px solid var(--border-color);
+    }
+
+    .empty-state i {
+        font-size: 4rem;
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+    }
+
+    .empty-state h3 {
+        margin-bottom: 0.5rem;
+    }
+
+    .empty-state p {
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+    }
+    /*tombol beli sekarang*/
+    .btn-beli-sekarang {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: 0.3s;
+    }
+
+    .btn-beli-sekarang:hover {
+        background: #e03552;
+        transform: translateY(-2px);
+    }
+    /*mosal pop up*/
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background: var(--bg-surface);
+        border-radius: 20px;
+        max-width: 500px;
+        width: 90%;
+        padding: 2rem;
+        position: relative;
+        border: 1px solid var(--border-color);
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    /*qr tiket*/
+    .qrcode-container {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .qrcode-placeholder {
+        width: 200px;
+        height: 200px;
+        background: white;
+        margin: 1rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .tiket-grid {
+            grid-template-columns: 1fr;
+        }
+    }

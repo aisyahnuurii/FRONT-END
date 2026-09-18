@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRG — Profil Ranger</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  .detail-hero{
+    padding: 140px 6vw 70px;
+    display:grid; grid-template-columns: 1fr 1.3fr; gap: 50px; align-items:center;
+  }
+  @media (max-width: 820px){ .detail-hero{ grid-template-columns:1fr; padding-top:120px; } }
+  .badge{
+    aspect-ratio: 1/1; border-radius: var(--radius); border: var(--panel-border);
+    box-shadow: var(--panel-shadow); display:flex; align-items:center; justify-content:center;
+    font-size:5rem;
+  }
+  .detail-text .trait-tag{
+    font-family: var(--comic); font-size:.8rem; padding:8px 16px; border-radius:999px;
+    border:3px solid var(--ink); display:inline-block; color:#fff;
+  }
+  .detail-text h1{ font-family: var(--display); font-size: clamp(2.2rem,6vw,3.6rem); margin-top:14px; }
+  .detail-text p{ margin-top:16px; line-height:1.7; color:#374151; max-width:520px; }
+  .back-link{ display:inline-flex; gap:8px; align-items:center; margin-top:26px; font-family: var(--comic); font-size:.9rem; }
+  .back-link:hover{ color: var(--red); }
+</style>
+</head>
+<body data-page="team">
+
+<nav class="navbar">
+  <a href="../pages/home.html" class="nav-logo">PRG</a>
+  <ul class="nav-links">
+    <li><a href="../pages/home.html" data-page="home">Home</a></li>
+    <li><a href="../pages/gallery.html" data-page="gallery">Gallery</a></li>
+    <li><a href="../pages/timeline.html" data-page="timeline">Timeline</a></li>
+    <li><a href="../pages/team.html" data-page="team">Team</a></li>
+    <li><a href="../pages/messages.html" data-page="messages">Messages</a></li>
+    <li><a href="../pages/about.html" data-page="about">About</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+</nav>
+
+<section class="detail-hero">
+  <div class="badge reveal pop" id="badge"></div>
+  <div class="detail-text reveal from-right">
+    <span class="trait-tag" id="traitTag"></span>
+    <h1 id="nameTitle"></h1>
+    <p id="bioText"></p>
+    <a href="../pages/team.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Kembali ke Team</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <h2>Promosikan Aku</h2>
+  <p>Follow &amp; connect biar makin akrab.</p>
+  <div class="social-row">
+    <a class="ig" href="https://instagram.com" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a>
+    <a class="gh" href="https://github.com" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+    <a class="wa" href="https://wa.me/" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+  </div>
+  <p class="copyright">PRG © 2026 — dibuat dengan comic panel &amp; secangkir kopi.</p>
+</footer>
+
+<script src="../js/script.js"></script>
+<script>
+  const data = {
+    1:{emoji:'🟥', color:'#EF4444', name:'Ranger Merah', trait:'Keberanian', bio:'Selalu maju duluan kalau ada masalah. Gak takut ambil keputusan cepat, meski kadang ceroboh — tapi itu yang bikin tim jalan terus.'},
+    2:{emoji:'🟦', color:'#3B82F6', name:'Ranger Biru', trait:'Kepercayaan', bio:'Tempat curhat paling aman. Tenang, sabar, dan selalu jadi pengingat waktu yang lain mulai emosi.'},
+    3:{emoji:'🟨', color:'#FACC15', name:'Ranger Kuning', trait:'Optimisme', bio:'Selalu lihat sisi baik dari segala hal. Kalau lagi down, biasanya dia yang pertama nyemangatin.'},
+    4:{emoji:'🟩', color:'#22C55E', name:'Ranger Hijau', trait:'Kesetiaan', bio:'Gak pernah ninggalin tim di saat susah. Konsisten ada, walau gak banyak drama.'},
+    5:{emoji:'🟪', color:'#EC4899', name:'Ranger Pink', trait:'Kegembiraan', bio:'Sumber tawa di grup. Selalu punya cara bikin suasana jadi lebih hidup.'},
+    6:{emoji:'⬛', color:'#111827', name:'Ranger Hitam', trait:'Kekuatan', bio:'Diam-diam paling kuat nahan beban. Jarang ngeluh, tapi paling diandalkan saat kepepet.'},
+  };
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id') || '1';
+  const m = data[id] || data[1];
+
+  document.getElementById('badge').style.background = m.color;
+  document.getElementById('badge').textContent = m.emoji;
+  document.getElementById('traitTag').style.background = m.color;
+  document.getElementById('traitTag').textContent = m.trait;
+  document.getElementById('nameTitle').textContent = m.name;
+  document.getElementById('bioText').textContent = m.bio;
+  document.title = 'PRG — ' + m.name;
+
+  initReveal();
+</script>
+</body>
+</html>

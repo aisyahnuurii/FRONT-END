@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiket Saya - TiketKita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="../css/tiket_saya.css">
+    <link rel="stylesheet" href="../css/homepage.css">
+</head>
+<body>
+    <!--nav-->
+    <nav class="navbar">
+        <div class="nav-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div class="logo"><a href="../pages/honepage.html" style="color: inherit; text-decoration: none;">Tiket<span>Kita</span></a></div>
+            <div class="nav-center" style="display: flex; gap: 2rem; align-items: center; margin: 0 auto;">
+        <a href="../pages/honepage.html" style="color: var(--text-main); text-decoration: none;">Beranda</a>
+        <a href="../pages/all-events.html" style="color: var(--text-main); text-decoration: none;">Event</a>
+        <a href="../pages/promo.html" style="color: var(--text-main); text-decoration: none;">Promo</a>
+        </div>
+
+        <!-- Tiket Saya di kanan -->
+        <div class="nav-right">
+        <a href="../pages/tiket_saya.html" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">
+            Tiket Saya
+        </a>
+        </div>
+        
+        </div>
+    </nav>
+
+    <main class="tiket-container">
+        <div class="page-header">
+            <h1><i class="fi fi-rr-ticket"></i> Tiket Saya</h1>
+            <p>Kelola dan lihat semua tiket yang sudah Anda beli</p>
+        </div>
+
+        <div class="tiket-tabs">
+            <button class="tiket-tab active" data-filter="all">Semua Tiket</button>
+            <button class="tiket-tab" data-filter="paid">Sudah Dibayar</button>
+            <button class="tiket-tab" data-filter="pending">Menunggu Pembayaran</button>
+            <button class="tiket-tab" data-filter="expired">Kadaluarsa</button>
+        </div>
+
+        <div id="tiketGrid" class="tiket-grid"></div>
+    </main>
+
+    <!-- Modal Detail Tiket -->
+    <div id="tiketModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modalBody">
+            </div>
+        </div>
+    </div>
+
+<script src="../js/tiket_saya.js"></script>
+</body>
+</html>

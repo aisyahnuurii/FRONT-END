@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo - TiketKita</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homepage.css"> 
+    <link rel="stylesheet" href="../css/promo.css"> 
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-straight/css/uicons-bold-straight.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+    <!-- Jika belum login, sembunyikan seluruh body sementara sampai dialihkan -->
+    <script>
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+            document.body.style.display = 'none';
+            alert('Silakan masuk (login) terlebih dahulu untuk mengakses halaman Promo Eksklusif!');
+            window.location.href = '../pages/authentication.html';
+        }
+    </script>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Tiket<span>Kita</span></div>
+            <ul class="nav-links">
+                <li><a href="../pages/honepage.html#beranda">Beranda</a></li>
+                <li><a href="../pages/honepage.html#kategori">Event</a></li>
+                <li><a href="../pages/promo.html" class="active" style="color: var(--primary-color);">Promo</a></li>
+                <li><a href="../pages/honepage.html#tentang-kami">Tentang Kami</a></li>
+            </ul>
+            
+            <div class="auth-buttons">
+                <!-- TAMPILAN SESUDAH LOGIN -->
+                <div id="logged-in-menu" style="display: block; position: relative;">
+                    <!-- Tombol Trigger Profil -->
+                    <div id="userProfileBtn" style="display: flex; align-items: center; gap: 10px; color: var(--text-main, #f0eff6); font-weight: 600; cursor: pointer; padding: 8px 14px; border-radius: 12px; border: 1px solid var(--border-color, #2a2d3a); user-select: none; transition: 0.3s;">
+                        <i class="fi fi-rr-user" style="color: var(--primary-color, #ff3e5e); font-size: 1.1rem; display: flex; align-items: center;"></i>
+                        <span id="display-username">Pengguna</span>
+                        <i class="fi fi-rr-angle-small-down" style="font-size: 0.9rem; color: var(--text-muted, #7a7a9a); display: flex; align-items: center;"></i>
+                    </div>
+                    
+                    <!-- Isi Dropdown Menu -->
+                    <div id="dropdownMenu" style="display: none; position: absolute; right: 0; top: 125%; background-color: var(--bg-surface, #151821); border: 1px solid var(--border-color, #2a2d3a); border-radius: 12px; min-width: 160px; box-shadow: 0px 10px 25px rgba(0,0,0,0.5); z-index: 1000; overflow: hidden;">
+                        <a href="#" style="display: flex; align-items: center; gap: 10px; padding: 12px 16px; color: var(--text-main, #f0eff6); font-size: 0.9rem; font-weight: 500; border-bottom: 1px solid var(--border-color, #2a2d3a); text-decoration: none; transition: 0.3s;" onmouseover="this.style.backgroundColor='var(--bg-surface-hover, #1c202c)'" onmouseout="this.style.backgroundColor='transparent'">
+                            <i class="fi fi-rr-ticket" style="display: flex; align-items: center; font-size: 1rem;"></i> Tiket Saya
+                        </a>
+                        <a href="../pages/settings.html" style="display: flex; align-items: center; gap: 10px; padding: 12px 16px; color: var(--text-main, #f0eff6); font-size: 0.9rem; font-weight: 500; border-bottom: 1px solid var(--border-color, #2a2d3a); text-decoration: none; transition: 0.3s;" onmouseover="this.style.backgroundColor='var(--bg-surface-hover, #1c202c)'" onmouseout="this.style.backgroundColor='transparent'">
+                            <i class="fi fi-rr-settings" style="display: flex; align-items: center; font-size: 1rem;"></i> Setelan
+                        </a>
+                        <a href="#" id="logoutBtn" style="display: flex; align-items: center; gap: 10px; padding: 12px 16px; color: var(--primary-color, #ff3e5e); font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: 0.3s;" onmouseover="this.style.backgroundColor='var(--bg-surface-hover, #1c202c)'" onmouseout="this.style.backgroundColor='transparent'">
+                            <i class="fi fi-rr-exit" style="display: flex; align-items: center; font-size: 1rem;"></i> Log out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="promo-main">
+        <!-- Hero Promo Section -->
+        <section class="promo-hero fade-in">
+            <div class="promo-hero-content">
+                <h1 class="slide-up">Penawaran <span class="highlight">Terbaik</span><br>Untuk Momen Tak Terlupakan</h1>
+                <p class="slide-up delay-1">Nikmati diskon eksklusif, cashback, dan promo buy 1 get 1 khusus untuk Anda. Jangan sampai ketinggalan!</p>
+            </div>
+        </section>
+
+        <!-- Kategori Promo / Filter -->
+        <section class="promo-filter slide-up delay-2">
+            <button class="filter-btn active">Semua Promo</button>
+            <button class="filter-btn">Pengguna Baru</button>
+            <button class="filter-btn">Cashback Bank</button>
+            <button class="filter-btn">Flash Sale</button>
+            <button class="filter-btn">Konser & Festival</button>
+        </section>
+
+        <!-- Daftar Promo -->
+        <section class="promo-grid slide-up delay-3">
+            
+            <!-- Promo Card 1 -->
+            <div class="promo-card">
+                <div class="promo-card-header bg-gradient-1">
+                    <div class="promo-discount-badge">30% OFF</div>
+                    <h3>Promo Pengguna Baru TiketKita</h3>
+                </div>
+                <div class="promo-card-body">
+                    <p class="promo-desc">Diskon 30% tanpa minimum transaksi untuk pembelian tiket pertamamu di semua kategori event.</p>
+                    <div class="promo-details">
+                        <span class="valid-until"><i class="fi fi-rs-calendar-clock"></i> Berlaku s.d 31 Des 2026</span>
+                    </div>
+                    <div class="promo-action">
+                        <div class="promo-code" id="code1">BARU30</div>
+                        <button class="btn-copy" onclick="copyCode('BARU30', this)">Salin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promo Card 2 -->
+            <div class="promo-card">
+                <div class="promo-card-header bg-gradient-2">
+                    <div class="promo-discount-badge">CASHBACK 50K</div>
+                    <h3>Cashback Khusus Kartu BCA</h3>
+                </div>
+                <div class="promo-card-body">
+                    <p class="promo-desc">Dapatkan cashback sebesar Rp 50.000 untuk transaksi minimal Rp 200.000 menggunakan metode pembayaran BCA.</p>
+                    <div class="promo-details">
+                        <span class="valid-until"><i class="fi fi-rs-calendar-clock"></i> Kuota Terbatas!</span>
+                    </div>
+                    <div class="promo-action">
+                        <div class="promo-code" id="code2">BCA50K</div>
+                        <button class="btn-copy" onclick="copyCode('BCA50K', this)">Salin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promo Card 3 -->
+            <div class="promo-card">
+                <div class="promo-card-header bg-gradient-3">
+                    <div class="promo-discount-badge">BUY 1 GET 1</div>
+                    <h3>Spesial Festival Musik</h3>
+                </div>
+                <div class="promo-card-body">
+                    <p class="promo-desc">Beli 1 gratis 1 tiket masuk untuk semua event dengan kategori Festival Musik. Bawa temanmu sekarang!</p>
+                    <div class="promo-details">
+                        <span class="valid-until"><i class="fi fi-rs-calendar-clock"></i> Berlaku s.d 30 Jun 2026</span>
+                    </div>
+                    <div class="promo-action">
+                        <div class="promo-code" id="code3">B1G1FEST</div>
+                        <button class="btn-copy" onclick="copyCode('B1G1FEST', this)">Salin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promo Card 4 -->
+            <div class="promo-card">
+                <div class="promo-card-header bg-gradient-4">
+                    <div class="promo-discount-badge">DISKON 20%</div>
+                    <h3>Potongan Spesial Tiket VIP</h3>
+                </div>
+                <div class="promo-card-body">
+                    <p class="promo-desc">Rasakan pengalaman nonton konser terbaik dengan potongan 20% khusus pembelian tiket area VIP / VVIP.</p>
+                    <div class="promo-details">
+                        <span class="valid-until"><i class="fi fi-rs-calendar-clock"></i> Khusus Event Internasional</span>
+                    </div>
+                    <div class="promo-action">
+                        <div class="promo-code" id="code4">VIP20</div>
+                        <button class="btn-copy" onclick="copyCode('VIP20', this)">Salin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promo Card 5 -->
+            <div class="promo-card">
+                <div class="promo-card-header bg-gradient-5">
+                    <div class="promo-discount-badge">DISKON 50%</div>
+                    <h3>Flash Sale Tengah Malam</h3>
+                </div>
+                <div class="promo-card-body">
+                    <p class="promo-desc">Diskon gila-gilaan 50% hanya untuk transaksi yang dilakukan pada jam 00:00 - 02:00 WIB.</p>
+                    <div class="promo-details">
+                        <span class="valid-until"><i class="fi fi-rs-calendar-clock"></i> Malam ini Saja!</span>
+                    </div>
+                    <div class="promo-action">
+                        <div class="promo-code" id="code5">FLASH50</div>
+                        <button class="btn-copy" onclick="copyCode('FLASH50', this)">Salin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promo Card 6 -->
+            <div class="promo-card">
+                <div class="promo-card-header bg-gradient-6">
+                    <div class="promo-discount-badge">DISKON 15%</div>
+                    <h3>Promo Mahasiswa / Pelajar</h3>
+                </div>
+                <div class="promo-card-body">
+                    <p class="promo-desc">Dapatkan diskon 15% untuk kategori Seminar dan Edukasi. Wajib menggunakan email kampus saat pendaftaran.</p>
+                    <div class="promo-details">
+                        <span class="valid-until"><i class="fi fi-rs-calendar-clock"></i> Sepanjang Tahun</span>
+                    </div>
+                    <div class="promo-action">
+                        <div class="promo-code" id="code6">MHS15</div>
+                        <button class="btn-copy" onclick="copyCode('MHS15', this)">Salin</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Toast Notification for Copy -->
+    <div id="toast" class="toast-notification">
+        <i class="fi fi-rr-check-circle"></i> Kode <span id="toast-code"></span> berhasil disalin!
+    </div>
+
+    <!-- Footer -->
+    <footer id="tentang-kami" class="footer">
+        <div class="footer-container">
+            <div class="logo">Tiket<span>Kita</span></div>
+            <div class="footer-icons">
+                <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" title="Bantuan"><i class="fa-regular fa-comment-dots"></i></a>
+                <a href="#" title="Kebijakan Privasi"><i class="fa-solid fa-user-shield"></i></a>
+            </div>
+            <div class="copyright">&copy; 2026 TiketKita. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Script Halaman Promo & Navbar -->
+    <script src="../js/promo.js"></script>
+
+</body>
+</html>

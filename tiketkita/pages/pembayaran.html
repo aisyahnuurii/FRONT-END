@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran - TiketKita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homepage.css">
+    <link rel="stylesheet" href="../css/pembayaran.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+</head>
+<body>
+    <!-- nav-->
+    <nav class="navbar">
+        <div class="nav-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div class="logo"><a href="../pages/honepage.html" style="color: inherit; text-decoration: none;">Tiket<span>Kita</span></a></div>
+            
+            <div class="checkout-stepper">
+                <div class="step completed"><i class="fi fi-rr-check"></i> Pilih Tiket</div>
+                <div class="step-line"></div>
+                <div class="step active"><i class="fi fi-rr-money-bill-wave"></i> Pembayaran</div>
+                <div class="step-line"></div>
+                <div class="step"><i class="fi fi-rr-document-signed"></i> Konfirmasi</div>
+            </div>
+
+            <div style="width: 120px;"></div>
+        </div>
+    </nav>
+
+    <main class="payment-main">
+        <div class="payment-grid">
+            
+            <!-- BAGIAN KIRI: Timer & Metode Pembayaran -->
+            <div class="payment-methods-section">
+                
+                <!-- Countdown Timer -->
+                <div class="timer-banner">
+                    <div class="timer-info">
+                        <span>SELESAIKAN PEMBAYARAN SEBELUM</span>
+                        <h2 id="countdownDisplay">15:00</h2>
+                    </div>
+                    <div class="timer-warning">
+                        <p>Tiket akan <strong>otomatis dibatalkan</strong> jika<br>melewati batas waktu.</p>
+                    </div>
+                </div>
+
+                <h3>Pilih Metode Pembayaran</h3>
+                
+                <div class="method-tabs">
+                    <button class="tab-btn active" data-target="transfer"><i class="fi fi-rr-bank"></i> Transfer Bank</button>
+                    <button class="tab-btn" data-target="ewallet"><i class="fi fi-rr-wallet"></i> E-Wallet</button>
+                    <button class="tab-btn" data-target="kredit"><i class="fi fi-rr-credit-card"></i> Kartu Kredit</button>
+                    <button class="tab-btn" data-target="va"><i class="fi fi-rr-apps"></i> Virtual Account</button>
+                    <button class="tab-btn" data-target="qris"><i class="fi fi-rr-qrcode"></i> QRIS</button>
+                </div>
+
+                <div id="paymentOptionsContainer">
+                    <div class="bank-grid payment-group" id="opt-transfer">
+                        <button class="bank-btn active">BCA</button>
+                        <button class="bank-btn">BNI</button>
+                        <button class="bank-btn">Mandiri</button>
+                    </div>
+                    <div class="bank-grid payment-group" id="opt-ewallet" style="display: none;">
+                        <button class="bank-btn">GoPay</button>
+                        <button class="bank-btn">OVO</button>
+                        <button class="bank-btn">DANA</button>
+                        <button class="bank-btn">ShopeePay</button>
+                    </div>
+                    <div class="bank-grid payment-group" id="opt-kredit" style="display: none;">
+                        <button class="bank-btn">Visa</button>
+                        <button class="bank-btn">Mastercard</button>
+                        <button class="bank-btn">JCB</button>
+                    </div>
+                    <div class="bank-grid payment-group" id="opt-va" style="display: none;">
+                        <button class="bank-btn">BCA VA</button>
+                        <button class="bank-btn">BRIVA</button>
+                        <button class="bank-btn">Mandiri VA</button>
+                    </div>
+                    <div class="bank-grid payment-group" id="opt-qris" style="display: none;">
+                        <button class="bank-btn">QRIS Standard</button>
+                    </div>
+                </div>
+
+                <div class="instruction-box" id="instructionBox">
+                    <h4><i class="fi fi-rr-info"></i> Menunggu Pilihan</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Pilih salah satu metode di atas.</p>
+                </div>
+            </div>
+
+            <!-- BAGIAN KANAN: Ringkasan & Aksi -->
+            <div class="payment-summary-section">
+                <div class="summary-card">
+                    <h3>Ringkasan Pesanan</h3>
+                    
+                    <div class="event-mini-detail">
+                        <img src="https://images.unsplash.com/photo-1540039155732-d68a9960241b?q=80&w=100&auto=format&fit=crop" alt="Event" class="event-thumb">
+                        <div>
+                            <h4>Soundrenaline 2026</h4>
+                            <p>12-13 Feb 2026<br>GWK, Bali</p>
+                        </div>
+                    </div>
+
+                    <div class="price-breakdown">
+                        <div class="row"><span>Tiket VIP - 2 Days</span><span>Rp 800.000</span></div>
+                        <div class="row"><span>Biaya Layanan</span><span>Rp 15.000</span></div>
+                        <div class="row"><span>Pajak (10%)</span><span>Rp 80.000</span></div>
+                        <div class="row discount-row" id="promoRow" style="display: none;">
+                            <span>Promo Spesial</span><span id="promoAmount">- Rp 0</span>
+                        </div>
+                    </div>
+
+                    <div class="promo-input-group">
+                        <input type="text" id="promoCodeInput" placeholder="Masukkan kode promo...">
+                        <button onclick="applyNominalPromo()">Pakai</button>
+                    </div>
+
+                    <div class="total-payment">
+                        <p>Total Pembayaran</p>
+                        <h2 id="finalTotal">Rp 895.000</h2>
+                        <small>Kadaluarsa Hari ini, <span id="expireTime"></span> WIB</small>
+                    </div>
+
+                    <button class="btn-pay-now" onclick="confirmPayment()">Bayar Sekarang</button>
+                    
+                    <div class="security-badges">
+                        <span><i class="fi fi-rr-shield-check"></i> Pembayaran Aman</span>
+                    </div>
+                </div>
+
+                <div class="transaction-status">
+                    <h3>Status Transaksi</h3>
+                    <ul class="timeline">
+                        <li class="completed"><strong>Pesanan Dibuat</strong><br><small>Selesai</small></li>
+                        <li class="active"><strong>Menunggu Pembayaran</strong><br><small>Menunggu</small></li>
+                        <li><strong>Tiket Diterbitkan</strong></li>
+                        <li><strong>E-tiket Terkirim</strong><br><small>Ke email Anda</small></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+<script src="../js/pembayaran.js"></script>
+</body>
+</html>

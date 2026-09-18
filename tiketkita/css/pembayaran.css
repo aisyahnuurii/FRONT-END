@@ -1,0 +1,173 @@
+body {
+    background-color: var(--bg-main, #0c0e14);
+    color: var(--text-main, #f0eff6);
+    padding-top: 80px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/*layout utama*/
+.payment-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.payment-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+}
+
+/* GAYA TRACKER NAVIGASI (STEPPER)*/
+.checkout-stepper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.step.completed {
+    color: #10b981;
+}
+
+.step.active {
+    color: var(--text-main);
+}
+
+.step.active i {
+    color: var(--accent-yellow);
+}
+
+.step-line {
+    width: 40px;
+    height: 2px;
+    background-color: var(--border-color);
+}
+
+.checkout-stepper .completed + .step-line {
+    background-color: #10b981;
+}
+
+/*timer*/
+.timer-banner {
+    background: rgba(255, 62, 94, 0.05);
+    border: 1px solid rgba(255, 62, 94, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.timer-info span { font-size: 0.8rem; color: var(--text-muted, #7a7a9a); font-weight: 600; letter-spacing: 1px; }
+.timer-info h2 { color: var(--primary-color, #ff3e5e); font-size: 2.5rem; font-weight: 800; margin: 0; font-variant-numeric: tabular-nums; }
+.timer-warning p { font-size: 0.85rem; color: var(--text-muted); text-align: right; margin: 0; line-height: 1.5; }
+.timer-warning strong { color: var(--primary-color); }
+
+/*tab meto bayar*/
+.method-tabs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+.tab-btn {
+    background: var(--bg-surface, #151821);
+    border: 1px solid var(--border-color, #2a2d3a);
+    color: var(--text-main);
+    padding: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: 0.3s;
+}
+.tab-btn i { font-size: 1.5rem; }
+.tab-btn:hover { border-color: var(--primary-color); }
+.tab-btn.active { border-color: var(--primary-color); background: rgba(255, 62, 94, 0.1); color: var(--primary-color); }
+
+/*grid bank*/
+.bank-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+.bank-btn {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 0.8rem 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.3s;
+}
+.bank-btn.active { border-color: #00d4b1; color: #00d4b1; background: rgba(0, 212, 177, 0.1); }
+
+/*petunjuk pembayarab*/
+.instruction-box { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.5rem; }
+.instruction-box h4 { margin-bottom: 1rem; color: white; display: flex; align-items: center; gap: 0.5rem; }
+.instruction-box ol { padding-left: 1.2rem; color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; }
+.instruction-box ol li { margin-bottom: 0.5rem; }
+.highlight-text { color: #00d4b1; }
+
+/*kartu ringaksan*/
+.summary-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+}
+.summary-card h3 { margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
+
+/*detail event mini*/
+.event-mini-detail { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+.event-thumb { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; }
+.event-mini-detail h4 { font-size: 1rem; margin-bottom: 0.3rem; }
+.event-mini-detail p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
+/*rincian harga*/
+.price-breakdown .row { display: flex; justify-content: space-between; margin-bottom: 0.8rem; font-size: 0.9rem; color: var(--text-muted); }
+.discount-row { color: #10b981 !important; font-weight: 600; }
+/*kode input promo*/
+.promo-input-group { display: flex; gap: 0.5rem; margin: 1.5rem 0; padding-bottom: 1.5rem; border-bottom: 1px dashed var(--border-color); }
+.promo-input-group input { flex-grow: 1; padding: 0.8rem 1rem; background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 10px; color: white; }
+.promo-input-group button { background: var(--border-color); color: white; border: none; padding: 0 1.2rem; border-radius: 10px; cursor: pointer; font-weight: 600; transition: 0.3s; }
+.promo-input-group button:hover { background: var(--primary-color); }
+/*total*/
+.total-payment { margin-bottom: 1.5rem; }
+.total-payment p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.3rem; }
+.total-payment h2 { color: #00d4b1; font-size: 2rem; margin-bottom: 0.3rem; }
+.total-payment small { color: var(--primary-color); font-size: 0.8rem; font-weight: 600; }
+/*tombol bayar sekarang*/
+.btn-pay-now { width: 100%; padding: 1.2rem; background: var(--primary-color); color: white; border: none; border-radius: 14px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: 0.3s; margin-bottom: 1rem; }
+.btn-pay-now:hover { background: #e03552; box-shadow: 0 10px 20px rgba(255, 62, 94, 0.3); transform: translateY(-2px); }
+
+/*keamanan, status timeline pembayaran*/
+.security-badges { text-align: center; font-size: 0.85rem; color: #10b981; font-weight: 600; }
+
+.transaction-status { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 20px; padding: 1.5rem; }
+.timeline { list-style: none; padding-left: 10px; border-left: 2px solid var(--border-color); margin-top: 1rem; }
+.timeline li { position: relative; padding-left: 20px; margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.9rem; }
+.timeline li::before { content: ''; position: absolute; left: -26px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--bg-surface); border: 2px solid var(--border-color); }
+.timeline li.completed { color: white; }
+.timeline li.completed::before { background: #10b981; border-color: #10b981; }
+.timeline li.active { color: white; }
+.timeline li.active::before { background: var(--primary-color); border-color: var(--primary-color); box-shadow: 0 0 10px rgba(255,62,94,0.5); }
+
+@media (max-width: 992px) {
+    .payment-grid { grid-template-columns: 1fr; }
+    .method-tabs, .bank-grid { grid-template-columns: repeat(2, 1fr); }
+}

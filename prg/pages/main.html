@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRG</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  body{ background: var(--navy); overflow:hidden; height:100vh; }
+
+  /*  Loading Screen */
+  #loading{
+    position:fixed; inset:0; z-index:100;
+    background: var(--navy);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap: 18px;
+  }
+  #loading .logo{
+    font-family: var(--display);
+    font-size: clamp(3rem,10vw,6rem);
+    color: #fff;
+    opacity:0;
+    letter-spacing: 4px;
+    animation: fadeInLogo 1s ease forwards 0.2s;
+  }
+  #loading .logo span{ color: var(--red); }
+  #loading .loading-text{
+    font-family: var(--comic);
+    color: var(--yellow);
+    font-size: 1rem;
+    opacity:0;
+    animation: fadeInLogo 1s ease forwards 0.9s;
+    display:flex; gap:4px;
+  }
+  #loading .loading-text .dot{ animation: bounce 1.1s infinite ease-in-out; }
+  #loading .loading-text .dot:nth-child(2){ animation-delay:.15s; }
+  #loading .loading-text .dot:nth-child(3){ animation-delay:.3s; }
+  #loading .bar{
+    width: min(280px, 60vw); height: 8px; border-radius: 6px;
+    background: rgba(255,255,255,0.12);
+    overflow:hidden; opacity:0;
+    animation: fadeInLogo .6s ease forwards 1.1s;
+  }
+  #loading .bar-fill{
+    height:100%; width:0%;
+    background: linear-gradient(90deg, var(--red), var(--yellow), var(--blue));
+    animation: fillBar 2.1s ease forwards 1.1s;
+  }
+  @keyframes fadeInLogo{ to{ opacity:1; } }
+  @keyframes fillBar{ to{ width:100%; } }
+  @keyframes bounce{ 0%,80%,100%{ transform: translateY(0); } 40%{ transform: translateY(-6px); } }
+
+  /*  Welcome Screen  */
+  #welcome{
+    position:fixed; inset:0; z-index:50;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    background: var(--navy);
+    opacity:0; visibility:hidden;
+    transition: opacity .6s ease;
+    padding: 20px;
+  }
+  #welcome.show{ opacity:1; visibility:visible; }
+
+  .blob-field{ position:absolute; inset:0; overflow:hidden; z-index:0; }
+  .blob{
+    position:absolute; border-radius:50%;
+    filter: blur(2px);
+    opacity:.55;
+    animation: float 9s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{ transform: translate(0,0) scale(1); }
+    50%{ transform: translate(20px,-30px) scale(1.08); }
+  }
+
+  #welcome .content{ position:relative; z-index:2; }
+  #welcome .brand{
+    font-family: var(--display);
+    font-size: clamp(3.2rem, 12vw, 7rem);
+    color:#fff;
+    -webkit-text-stroke: 2px var(--red);
+    letter-spacing: 3px;
+  }
+  #welcome .tagline{
+    font-family: var(--comic);
+    color: var(--yellow);
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    margin-top: 14px;
+    max-width: 640px;
+  }
+  #welcome .enter-btn{
+    margin-top: 46px;
+    font-family: var(--comic);
+    font-size: 1.2rem;
+    padding: 18px 52px;
+    border-radius: 16px;
+    border: 4px solid #fff;
+    background: var(--red);
+    color:#fff;
+    cursor:pointer;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.4);
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  #welcome .enter-btn:hover{
+    transform: scale(1.12) translate(-2px,-2px);
+    box-shadow: 12px 12px 0 rgba(0,0,0,0.45);
+    background:#dc2626;
+  }
+  #welcome .enter-btn:active{ transform: scale(0.97); }
+  #welcome .hint{
+    margin-top:16px; font-size:.75rem; color: rgba(255,255,255,0.4); font-family: var(--ui);
+  }
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="logo">PR<span>G</span></div>
+  <div class="loading-text"><span>Loading</span><span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
+  <div class="bar"><div class="bar-fill"></div></div>
+</div>
+
+<div id="welcome">
+  <div class="blob-field" id="blobField"></div>
+  <div class="content">
+    <div class="brand">PRG</div>
+    <p class="tagline">"ANAK ROBLOK BIKIN GOB-"</p>
+    <button class="enter-btn" id="enterBtn">Mau Masuk?</button>
+    <p class="hint">20k dulu</p>
+  </div>
+</div>
+
+<script>
+  // Welcome transition
+  const LOAD_MS = 2400;
+  setTimeout(()=>{
+    document.getElementById('loading').style.display = 'none';
+    const w = document.getElementById('welcome');
+    w.classList.add('show');
+    spawnBlobs();
+  }, LOAD_MS);
+
+  document.getElementById('enterBtn').addEventListener('click', ()=>{
+    document.getElementById('welcome').style.opacity = 0;
+    setTimeout(()=> window.location.href = 'home.html', 450);
+  });
+
+  // Interactive floating blobs background (Power Ranger colors), react to pointer
+  function spawnBlobs(){
+    const colors = ['#EF4444','#3B82F6','#FACC15','#22C55E','#EC4899'];
+    const field = document.getElementById('blobField');
+    for(let i=0;i<6;i++){
+      const b = document.createElement('div');
+      const size = 90 + Math.random()*140;
+      b.className = 'blob';
+      b.style.width = size+'px';
+      b.style.height = size+'px';
+      b.style.background = colors[i % colors.length];
+      b.style.left = Math.random()*90+'%';
+      b.style.top = Math.random()*90+'%';
+      b.style.animationDuration = (7+Math.random()*5)+'s';
+      field.appendChild(b);
+    }
+    field.addEventListener('pointermove', (e)=>{
+      const {clientX:x, clientY:y} = e;
+      const blobs = field.querySelectorAll('.blob');
+      blobs.forEach((b,i)=>{
+        const rect = b.getBoundingClientRect();
+        const dx = (x - (rect.left+rect.width/2)) * 0.015 * ((i%2)?1:-1);
+        const dy = (y - (rect.top+rect.height/2)) * 0.015 * ((i%2)?-1:1);
+        b.style.transform = `translate(${dx}px, ${dy}px)`;
+      });
+    });
+  }
+</script>
+</body>
+</html>

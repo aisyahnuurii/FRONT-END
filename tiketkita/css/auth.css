@@ -1,0 +1,206 @@
+
+:root {
+    --bg-main: #0c0e14;
+    --bg-surface: #151821;
+    --bg-surface-hover: #1c202c;
+    --primary-color: #ff3e5e;
+    --primary-hover: #e03552;
+    --text-main: #f0eff6;
+    --text-muted: #7a7a9a;
+    --border-color: #2a2d3a;
+    --font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-family); }
+
+body {
+    display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; background-color: var(--bg-main);
+    overflow-x: hidden; padding: 1rem;
+}
+
+.container {
+    position: relative;
+    width: 950px;
+    height: 700px; 
+    background: var(--bg-surface);
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+/* Form Box Base Styles */
+.form-box {
+    position: absolute; top: 0; width: 50%; height: 100%;
+    display: flex; justify-content: center; align-items: center;
+    padding: 0 3.5rem; transition: all 0.6s ease-in-out;
+    background: var(--bg-surface); overflow-y: auto;
+}
+
+/* Login Form Positioning */
+.form-box.login { left: 0; z-index: 2; opacity: 1; }
+
+
+.form-box.register { left: 0; opacity: 0; z-index: 1; }
+
+
+.form-box.register .auth-form { padding-bottom: 1rem; }
+
+/* --- LOGIKA SLIDING DESKTOP --- */
+
+.container.active .form-box.login {
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 1;
+}
+
+
+.container.active .form-box.register {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: displayForm 0.6s;
+}
+
+@keyframes displayForm {
+    0%, 49.99% { opacity: 0; z-index: 1; }
+    50%, 100% { opacity: 1; z-index: 5; }
+}
+
+/* Auth Form Layout */
+.auth-form { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 1.2rem; }
+
+/* Back Link */
+.back-link {
+    position: absolute; top: 2rem; left: 3.5rem; color: var(--text-muted);
+    font-size: 0.85rem; font-weight: 500; display: flex; align-items: center;
+    gap: 0.5rem; text-decoration: none; transition: color 0.3s; z-index: 20;
+}
+.back-link:hover { color: var(--text-main); }
+
+.logo { font-size: 1.8rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem; }
+.logo span { color: var(--primary-color); }
+
+.auth-header h2 { font-size: 1.6rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; }
+.auth-header p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; }
+
+/* Input Groups */
+.input-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.input-group label { font-size: 0.85rem; font-weight: 500; color: var(--text-main); }
+.input-wrapper { position: relative; display: flex; align-items: center; }
+.input-wrapper .icon { position: absolute; left: 1rem; color: var(--text-muted); font-size: 0.95rem; }
+.input-wrapper input {
+    width: 100%; padding: 0.9rem 1rem 0.9rem 2.8rem; background-color: var(--bg-main);
+    border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-main);
+    font-size: 0.9rem; transition: all 0.3s;
+}
+.input-wrapper input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(255, 62, 94, 0.15); }
+.toggle-password { position: absolute; right: 1rem; color: var(--text-muted); cursor: pointer; }
+
+/* Password Strength Indicator */
+.password-strength { height: 4px; background-color: var(--border-color); border-radius: 2px; margin-top: 0.2rem; overflow: hidden; }
+.strength-bar { height: 100%; width: 0; transition: 0.3s; }
+.strength-text { font-size: 0.75rem; color: var(--text-muted); text-align: right; display: block; }
+
+/* Form Options & Buttons */
+.form-options { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
+.remember-me, .terms-label { display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); cursor: pointer; }
+input[type="checkbox"] { accent-color: var(--primary-color); width: 15px; height: 15px; }
+
+.btn-primary {
+    background-color: var(--primary-color); color: white; padding: 0.9rem; border: none;
+    border-radius: 12px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s;
+}
+.btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 62, 94, 0.3); }
+
+.divider { display: flex; align-items: center; text-align: center; color: var(--text-muted); font-size: 0.8rem; margin: 0.2rem 0; }
+.divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid var(--border-color); }
+.divider span { padding: 0 0.8rem; }
+
+.social-login { display: flex; }
+.btn-social {
+    width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.8rem; background-color: var(--bg-main); border: 1px solid var(--border-color);
+    border-radius: 12px; color: var(--text-main); font-weight: 500; font-size: 0.9rem; cursor: pointer; transition: 0.3s;
+}
+.btn-social:hover { background-color: var(--bg-surface-hover); }
+.btn-social img { width: 18px; }
+
+/* Tombol Switch Mobile  */
+.mobile-switch-btn {
+    display: none; 
+    width: 100%; padding: 0.8rem; background: transparent; border: none;
+    color: var(--text-muted); font-weight: 500; font-size: 0.9rem;
+    cursor: pointer; text-align: center; transition: all 0.3s ease; margin-top: 1rem;
+}
+.mobile-switch-btn:hover { color: var(--primary-color); }
+.mobile-switch-btn span { color: var(--primary-color); font-weight: 700; }
+
+/* Toggle Box & Panels  */
+.toggle-box {
+    position: absolute; top: 0; left: 50%; width: 50%; height: 100%;
+    overflow: hidden; transition: all 0.6s ease-in-out; z-index: 10;
+}
+.container.active .toggle-box { transform: translateX(-100%); }
+.toggle-box::before {
+    content: ''; position: absolute; left: -250%; top: 0; width: 300%; height: 100%;
+    background: var(--primary-color); z-index: -1; transition: all 0.6s ease-in-out;
+}
+.container.active .toggle-box::before { transform: translateX(50%); }
+
+.toggle-panel {
+    position: absolute; width: 100%; height: 100%; display: flex;
+    flex-direction: column; justify-content: center; align-items: center;
+    padding: 0 3.5rem; text-align: center; top: 0; transition: all 0.6s ease-in-out;
+}
+.toggle-left { transform: translateX(-200%); background: linear-gradient(to top, rgba(12, 14, 20, 0.95), rgba(21, 24, 33, 0.4)), url('https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat; }
+.container.active .toggle-left { transform: translateX(0); }
+.toggle-right { right: 0; transform: translateX(0); background: linear-gradient(to top, rgba(12, 14, 20, 0.95), rgba(21, 24, 33, 0.4)), url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat; }
+.container.active .toggle-right { transform: translateX(200%); }
+
+.overlay-text h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.6rem; color: white; }
+.overlay-text p { color: rgba(240, 239, 246, 0.85); font-size: 0.9rem; margin-bottom: 2rem; }
+.toggle-panel .btn {
+    width: 150px; height: 45px; background: transparent; border: 2px solid white;
+    color: white; border-radius: 12px; font-weight: 600; cursor: pointer; transition: 0.3s;
+}
+.toggle-panel .btn:hover { background: white; color: var(--primary-color); }
+
+
+@media screen and (max-width: 992px) {
+    .container { width: 95%; height: auto; min-height: 650px; border-radius: 24px; }
+    .overlay-text h3 { font-size: 1.5rem; }
+}
+
+@media screen and (max-width: 768px) {
+    body { padding: 0; margin: 0; overflow: hidden; height: 100dvh; display: flex; align-items: center; justify-content: center; }
+    
+    .container {
+        width: 100%; height: 100dvh; border-radius: 0; border: none;
+        box-shadow: none; position: relative; overflow: hidden;
+    }
+
+    .toggle-box { display: none !important; }
+
+    .form-box {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        padding: 2rem 1.5rem; opacity: 0; visibility: hidden; z-index: 1;
+        transition: all 0.3s ease; overflow-y: auto;
+    }
+
+    .form-box.login { opacity: 1; visibility: visible; z-index: 5; }
+    .form-box.register { opacity: 0; visibility: hidden; z-index: 1; }
+    .form-box.register.active-mobile { opacity: 1; visibility: visible; z-index: 10; }
+    .container.active .form-box.login { opacity: 0; visibility: hidden; }
+
+    .back-link { position: relative; top: 0; left: 0; margin-bottom: 1.5rem; }
+    .auth-form { gap: 1rem; max-width: 100%; padding-top: 0; }
+    
+    
+    .mobile-switch-btn { display: block; }
+    
+    
+    .form-box.register .social-login,
+    .form-box.register .divider { display: none !important; }
+}

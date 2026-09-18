@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiketKita - Temukan Event Terbaik Untukmu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homepage.css">
+<!--icon-->
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-straight/css/uicons-bold-straight.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-rounded/css/uicons-thin-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Tiket<span>Kita</span></div>
+            <ul class="nav-links">
+                <li><a href="#beranda" class="active" style="color: var(--primary-color);" >Beranda</a></li>
+                <li><a href="../pages/all-events.html">Event</a></li>
+                <li><a href="../pages/promo.html" class="promo-nav-link" id="navPromo">Promo</a></li>
+                <li><a href="#tentang-kami">Tentang Kami</a></li>
+            </ul>
+
+            <div class="auth-buttons">
+                <div id="guest-menu" class="user-menu">
+                <i class="fi fi-sr-circle-user user-icon"></i>
+                    <div class="user-dropdown">
+                        <a href="authentication.html">Masuk</a>
+                        <a href="authentication.html">Daftar</a>
+                    </div>
+                </div>
+
+                <div id="logged-in-menu" style="display: none; position: relative;">
+                    <div id="userProfileBtn" style="display: flex; align-items: center; gap: 10px; color: var(--text-main, #f0eff6); font-weight: 600; cursor: pointer; padding: 8px 14px; border-radius: 12px; border: 1px solid var(--border-color, #2a2d3a); user-select: none; transition: 0.3s;">
+                        <i class="fi fi-rr-user" style="color: var(--primary-color, #ff3e5e); font-size: 1.1rem; display: flex; align-items: center;"></i>
+                        <span id="display-username">NamaUser</span>
+                    </div>
+                    
+                    <div id="dropdownMenu" style="display: none; position: absolute; right: 0; top: 125%; background-color: var(--bg-surface, #151821); border: 1px solid var(--border-color, #2a2d3a); border-radius: 12px; min-width: 160px; box-shadow: 0px 10px 25px rgba(0,0,0,0.5); z-index: 1000; overflow: hidden;">
+                        <a href="settings.html" style="display: flex; align-items: center; gap: 10px; padding: 12px 16px; color: var(--text-main, #f0eff6); font-size: 0.9rem; font-weight: 500; border-bottom: 1px solid var(--border-color, #2a2d3a); text-decoration: none; transition: 0.3s;" onmouseover="this.style.backgroundColor='var(--bg-surface-hover, #1c202c)'" onmouseout="this.style.backgroundColor='transparent'">
+                            <i class="fi fi-rr-settings" style="display: flex; align-items: center; font-size: 1rem;"></i> Setelan
+                        </a>
+                        <a href="../pages/tiket_saya.html" style="display: flex; align-items: center; gap: 10px; padding: 12px 16px; color: var(--text-main, #f0eff6); font-size: 0.9rem; font-weight: 500; border-bottom: 1px solid var(--border-color, #2a2d3a); text-decoration: none; transition: 0.3s;" onmouseover="this.style.backgroundColor='var(--bg-surface-hover, #1c202c)'" onmouseout="this.style.backgroundColor='transparent'">
+                            <i class="fi fi-rr-ticket" style="display: flex; align-items: center; font-size: 1rem;"></i> Tiket Saya
+                        </a>
+                        <a href="#" id="logoutBtn" style="display: flex; align-items: center; gap: 10px; padding: 12px 16px; color: var(--primary-color, #ff3e5e); font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: 0.3s;" onmouseover="this.style.backgroundColor='var(--bg-surface-hover, #1c202c)'" onmouseout="this.style.backgroundColor='transparent'">
+                            <i class="fi fi-rr-exit" style="display: flex; align-items: center; font-size: 1rem;"></i> Log out
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="beranda" class="hero">
+
+            <div class="hero-gif">
+                <div class="tenor-gif-embed"
+                    data-postid="24406779"
+                    data-share-method="host"
+                    data-aspect-ratio="1.80791"
+                    data-width="100%">
+                </div>
+            </div>
+
+            <div class="badge fade-in">
+                10+ Event Aktif di Seluruh Indonesia
+            </div>
+
+            <h1 class="slide-up">
+                Temukan <br><span class="highlight">Event Terbaik</span><br> Untukmu
+            </h1>
+
+            <p class="slide-up delay-1">
+                Platform tiket event dan konser terpercaya. Dari konser musik hingga seminar teknologi,
+                semua tersedia dengan sistem pembelian aman dan instan.
+            </p>
+
+            <div class="hero-buttons slide-up delay-2">
+                <a href="#kategori" class="btn-primary">Jelajahi Event</a>
+            </div>
+
+        </section>
+
+        <!-- Search Bar Section -->
+        <section class="search-section fade-in delay-3">
+            <div class="search-container">
+                <div class="search-item">
+                    <span class="icon">
+                        <i class="fi fi-bs-search"></i>
+                    </span>
+                    <div class="input-group">
+                        <label>Cari Event</label>
+                        <input type="text" id="cariEvent" placeholder="Nama konser, festival, seminar...">
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="search-item dropdown-sim">
+                   <span class="icon">
+                    <i class="fi fi-rr-route"></i>
+                   </span>
+                    <div class="input-group">
+                        <label>Lokasi</label>
+                            <select id="lokasi">
+                                <option value="" selected disabled>Dimana Saja</option>
+                                <option>Jakarta</option>
+                                <option>Bandung</option>
+                                <option>Surabaya</option>
+                                <option>Bali</option>
+                            </select>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="search-item dropdown-sim">
+                    <span class="icon">
+                    <i class="fi fi-rs-daily-calendar"></i>
+                    </span>
+                <div class="input-group">
+                    <label>Tanggal</label>
+                    <input type="month" id="tanggal">
+                </div>
+                </div>
+                <button class="btn-search" id="btnCari"> Cari</button>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="kategori" class="categories fade-in delay-4">
+            <div class="section-header">
+                <h2>Jelajahi Kategori</h2>
+                <a href="../pages/all-events.html" class="link-all">Lihat Semua &rarr;</a>
+            </div>
+
+        <div class="category-grid">
+            <a href="../pages/all-events.html?category=konser">
+            <div class="category-card">
+                <div class="cat-icon-wrapper">
+                <i class="fi fi-rr-music-alt cat-icon"></i>
+                </div>
+                <h3>Konser</h3>
+                <p>142 event</p>
+            </div>
+            </a>
+
+            <a href="../pages/all-events.html?category=festival">
+            <div class="category-card">
+                <div class="cat-icon-wrapper">
+                <i class="fi fi-rr-theater-masks cat-icon"></i>
+                </div>
+                <h3>Festival</h3>
+                <p>58 event</p>
+            </div>
+            </a>
+
+            <a href="../pages/all-events.html?category=seminar">
+            <div class="category-card">
+                <div class="cat-icon-wrapper">
+                <i class="fi fi-rr-videoconference cat-icon"></i>
+                </div>
+                <h3>Seminar</h3>
+                <p>89 event</p>
+            </div>
+            </a>
+
+            <a href="../pages/all-events.html?category=olahraga">
+            <div class="category-card">
+                <div class="cat-icon-wrapper">
+                <i class="fi fi-rs-biking cat-icon"></i>
+                </div>
+                <h3>Olahraga</h3>
+                <p>47 event</p>
+            </div>
+            </a>
+
+            <a href="../pages/all-events.html?category=pameran">
+            <div class="category-card">
+                <div class="cat-icon-wrapper">
+                <i class="fi fi-ts-sculpture cat-icon"></i>
+                </div>
+                <h3>Pameran</h3>
+                <p>34 event</p>
+            </div>
+            </a>
+
+            <a href="../pages/all-events.html?category=kuliner">
+            <div class="category-card">
+                <div class="cat-icon-wrapper">
+                <i class="fi fi-tr-kitchen-set cat-icon"></i>
+                </div>
+                <h3>Kuliner</h3>
+                <p>23 event</p>
+            </div>
+            </a>
+        </div>
+        </section>
+
+
+        <!-- Event Populer Section -->
+        <section id="event-populer" class="popular-events slide-up delay-4">
+            <div class="section-header">
+                <h2>Event Populer</h2>
+                <a href="../pages/all-events.html" class="link-all">Lihat Semua &rarr;</a>
+            </div>
+            
+                <div class="slider-container">
+                    <button id="prevBtn" class="slider-arrow left">❮</button>
+                    <div class="event-slider">
+                        <div class="event-grid">
+                            
+                            <!-- Event 1: Piala Liga Indonesia 2026 -->
+                            <a href="../pages/order-items.html?id=liga2026" class="event-card-link">
+                                <div class="event-card">
+                                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=400&h=250&fit=crop'); background-size: cover; background-position: center;">
+                                        <div class="image-gradient"></div>
+                                        <div class="date-badge">
+                                            <span class="month">JAN</span>
+                                            <span class="day">18</span>
+                                        </div>
+                                        <button class="btn-fav" data-event="Piala Liga Indonesia 2026" onclick="event.preventDefault(); toggleFav(this, 'Piala Liga Indonesia 2026');">
+                                            ♡
+                                        </button>
+                                        <div class="cat-tag">Olahraga</div>
+                                    </div>
+                                    <div class="event-info">
+                                        <h3>Piala Liga Indonesia 2026</h3>
+                                        <p class="location">
+                                            <i class="fi fi-rr-map-marker-home"></i> Stadion GBLA, Bandung
+                                        </p>
+                                        <div class="event-footer">
+                                            <div class="price">
+                                                <span>Mulai dari</span>
+                                                <strong>Rp 75K</strong>
+                                            </div>
+                                            <div class="progress-section">
+                                                <span class="progress-text">Tersisa 12%</span>
+                                                <div class="progress-bar">
+                                                    <div class="fill" style="width:12%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Event 2: Soundrenaline 2026 -->
+                            <a href="../pages/order-items.html?id=soundrenaline2026" class="event-card-link">
+                                <div class="event-card">
+                                    <div class="event-image" style="background-image: url('https://www.nme.com/wp-content/uploads/2022/08/blackpink-pink-venom-mtv-vmas-2022-1392x884.jpg'); background-size: cover; background-position: center;">
+                                        <div class="image-gradient"></div>
+                                        <div class="date-badge">
+                                            <span class="month">FEB</span>
+                                            <span class="day">12</span>
+                                        </div>
+                                        <button class="btn-fav" data-event="Soundrenaline 2026" onclick="event.preventDefault(); toggleFav(this, 'Soundrenaline 2026');">
+                                            ♡
+                                        </button>
+                                        <div class="cat-tag" style="background-color: rgba(0, 212, 177, 0.15); color: #00d4b1;">Konser</div>
+                                    </div>
+                                    <div class="event-info">
+                                        <h3>Soundrenaline 2026: The Next Level</h3>
+                                        <p class="location">
+                                            <i class="fi fi-rr-map-marker-home"></i> GWK, Bali
+                                        </p>
+                                        <div class="event-footer">
+                                            <div class="price">
+                                                <span>Mulai dari</span>
+                                                <strong>Rp 350K</strong>
+                                            </div>
+                                            <div class="progress-section">
+                                                <span class="progress-text">Tersisa 45%</span>
+                                                <div class="progress-bar">
+                                                    <div class="fill" style="width:45%; background-color: #00d4b1;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Event 3: Jakarta Fair 2026 -->
+                            <a href="../pages/order-items.html?id=jakartaFair2026" class="event-card-link">
+                                <div class="event-card">
+                                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&h=250&fit=crop'); background-size: cover; background-position: center;">
+                                        <div class="image-gradient"></div>
+                                        <div class="date-badge">
+                                            <span class="month">JUN</span>
+                                            <span class="day">10</span>
+                                        </div>
+                                        <button class="btn-fav" data-event="Jakarta Fair 2026" onclick="event.preventDefault(); toggleFav(this, 'Jakarta Fair 2026');">
+                                            ♡
+                                        </button>
+                                        <div class="cat-tag" style="background-color: rgba(255, 209, 102, 0.15); color: #ffd166;">Festival</div>
+                                    </div>
+                                    <div class="event-info">
+                                        <h3>Jakarta Fair 2026</h3>
+                                        <p class="location">
+                                            <i class="fi fi-rr-map-marker-home"></i> JIExpo, Jakarta
+                                        </p>
+                                        <div class="event-footer">
+                                            <div class="price">
+                                                <span>Mulai dari</span>
+                                                <strong>Rp 50K</strong>
+                                            </div>
+                                            <div class="progress-section">
+                                                <span class="progress-text">Tersisa 78%</span>
+                                                <div class="progress-bar">
+                                                    <div class="fill" style="width:78%; background-color: #ffd166;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Event 4: Tech Summit Indonesia 2026 -->
+                            <a href="../pages/order-items.html?id=techSummit2026" class="event-card-link">
+                                <div class="event-card">
+                                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=250&fit=crop'); background-size: cover; background-position: center;">
+                                        <div class="image-gradient"></div>
+                                        <div class="date-badge">
+                                            <span class="month">MAR</span>
+                                            <span class="day">05</span>
+                                        </div>
+                                        <button class="btn-fav" data-event="Tech Summit Indonesia 2026" onclick="event.preventDefault(); toggleFav(this, 'Tech Summit Indonesia 2026');">
+                                            ♡
+                                        </button>
+                                        <div class="cat-tag" style="background-color: rgba(74, 158, 255, 0.15); color: #4a9eff;">Seminar</div>
+                                    </div>
+                                    <div class="event-info">
+                                        <h3>Tech Summit Indonesia 2026</h3>
+                                        <p class="location">
+                                            <i class="fi fi-rr-map-marker-home"></i> ICE BSD, Tangerang
+                                        </p>
+                                        <div class="event-footer">
+                                            <div class="price">
+                                                <span>Mulai dari</span>
+                                                <strong>Rp 150K</strong>
+                                            </div>
+                                            <div class="progress-section">
+                                                <span class="progress-text">Tersisa 23%</span>
+                                                <div class="progress-bar">
+                                                    <div class="fill" style="width:23%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Event 5: Bali Marathon 2026 -->
+                            <a href="../pages/order-items.html?id=marathon2026" class="event-card-link">
+                                <div class="event-card">
+                                    <div class="event-image" style="background-image: url('https://blog.pengajartekno.co.id/wp-content/uploads/2023/07/Gambar-Status-WA-Lucu-13-768x921.jpg'); background-size: cover; background-position: center;">
+                                        <div class="image-gradient"></div>
+                                        <div class="date-badge">
+                                            <span class="month">AUG</span>
+                                            <span class="day">20</span>
+                                        </div>
+                                        <button class="btn-fav" data-event="Bali Marathon 2026" onclick="event.preventDefault(); toggleFav(this, 'Bali Marathon 2026');">
+                                            ♡
+                                        </button>
+                                        <div class="cat-tag" style="background-color: rgba(255, 140, 102, 0.15); color: #ff8c66;">Olahraga</div>
+                                    </div>
+                                    <div class="event-info">
+                                        <h3>Bali Marathon 2026</h3>
+                                        <p class="location">
+                                            <i class="fi fi-rr-map-marker-home"></i> Bali, Indonesia
+                                        </p>
+                                        <div class="event-footer">
+                                            <div class="price">
+                                                <span>Mulai dari</span>
+                                                <strong>Rp 200K</strong>
+                                            </div>
+                                            <div class="progress-section">
+                                                <span class="progress-text">Tersisa 34%</span>
+                                                <div class="progress-bar">
+                                                    <div class="fill" style="width:34%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Event 6: Indonesia Food Festival -->
+                            <a href="../pages/order-items.html?id=foodFest2026" class="event-card-link">
+                                <div class="event-card">
+                                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=250&fit=crop'); background-size: cover; background-position: center;">
+                                        <div class="image-gradient"></div>
+                                        <div class="date-badge">
+                                            <span class="month">APR</span>
+                                            <span class="day">15</span>
+                                        </div>
+                                        <button class="btn-fav" data-event="Indonesia Food Festival" onclick="event.preventDefault(); toggleFav(this, 'Indonesia Food Festival');">
+                                            ♡
+                                        </button>
+                                        <div class="cat-tag" style="background-color: rgba(255, 159, 74, 0.15); color: #ff9f4a;">Kuliner</div>
+                                    </div>
+                                    <div class="event-info">
+                                        <h3>Indonesia Food Festival 2026</h3>
+                                        <p class="location">
+                                            <i class="fi fi-rr-map-marker-home"></i> Senayan, Jakarta
+                                        </p>
+                                        <div class="event-footer">
+                                            <div class="price">
+                                                <span>Mulai dari</span>
+                                                <strong>Rp 35K</strong>
+                                            </div>
+                                            <div class="progress-section">
+                                                <span class="progress-text">Tersisa 56%</span>
+                                                <div class="progress-bar">
+                                                    <div class="fill" style="width:56%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <button id="nextBtn" class="slider-arrow right">❯</button>
+                </div>
+        </section>
+
+        <!-- Promo Banner -->
+        <section id="promo" class="promo-banner fade-in delay-5">
+            <div class="promo-bg"></div>
+            <div class="promo-content">
+                <div class="promo-badge">
+                    <strong>30%</strong>
+                    <span>DISKON</span>
+                </div>
+                <div class="promo-text">
+                    <h3>Promo Pengguna Baru! </h3>
+                    <p>Daftar sekarang dan dapatkan diskon 30% untuk pembelian tiket pertamamu. Berlaku untuk semua kategori event di seluruh Indonesia.</p>
+                </div>
+                <div class="promo-code-container">
+                    <div class="promo-code">BARU30</div>
+                    <p>Masukkan kode saat checkout</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="tentang-kami" class="footer">
+        <div class="footer-container">
+            <div class="logo">Tiket<span>Kita</span></div>
+        <div class="footer-icons">
+
+            <a href="#" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="#" title="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+            <a href="#" title="Bantuan">
+                <i class="fa-regular fa-comment-dots"></i>
+            </a>
+
+            <a href="#" title="Kebijakan Privasi">
+                <i class="fa-solid fa-user-shield"></i>
+            </a>
+        </div>
+        <div class="copyright">&copy; 2026 TiketKita. All rights reserved.</div>
+    </footer>
+
+    <script src="../js/homepage.js"></script>
+    
+</body>
+</html>

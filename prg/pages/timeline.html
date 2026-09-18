@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>PRG — ANU</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/timeline.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="../pages/home.html" class="nav-logo">PRG</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../pages/home.html">Home</a></li>
+      <li><a href="../pages/gallery.html">Gallery</a></li>
+      <li><a href="../pages/timeline.html" class="active">Anu</a></li>
+      <li><a href="../pages/team.html">Orang</a></li>
+      <li><a href="../pages/messages.html">Pesan</a></li>
+      <li><a href="../pages/about.html">Saya</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+  </nav>
+
+  <!-- Section Timeline -->
+  <section class="section">
+    <div class="center">
+      <span class="eyebrow">klik dua kali untuk pause</span>
+      <h2 class="section-title">Perjalanan <span class="hl">CEO</span></h2>
+      <p class="mt-16" style="max-width:600px; margin:16px auto 40px; color: rgba(17,24,39,0.6);">
+        dari ujung rambut hingga ujung kaki, dari ujung hati hingga ujung pikiran. EA<br>
+        <br>
+
+      </p>
+    </div>
+
+    <!-- Container Orbit Images -->
+    <div id="orbit-container" class="orbit-container">
+      <!-- JavaScript akan mengisi di sini -->
+    </div>
+
+    <!-- Status Indicator -->
+    <div style="text-align:center; margin-top:16px;">
+      <span id="orbit-status">Berputar...</span>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <h2>Promosikan Aku</h2>
+    <p>Follow &amp; connect biar tambah uang.</p>
+    <div class="social-row">
+      <a class="ig" href="https://instagram.com" target="_blank">Instagram</a>
+      <a class="gh" href="https://github.com" target="_blank"> GitHub</a>
+      <a class="wa" href="https://tiktok.com/" target="_blank">TikTok</a>
+    </div>
+    <p class="copyright">PRG © 2026 — dibuat dengan hati yang terdalam</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/timeline.js"></script>
+
+  <!-- Navbar Toggle (Mobile) -->
+  <script>
+    document.getElementById('navToggle')?.addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
