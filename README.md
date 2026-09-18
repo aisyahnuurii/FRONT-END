@@ -2,8 +2,8 @@
 ## Screenshots
 ### prg
 
-<img src="assets/screenshot(5).png" width="700">
+<img src="assets/screenshot (5).png" width="700">
 
 ### tiket kita
 
-<img src="assets/screenshot(4).png" width="700">
+<img src="assets/screenshot (4).png" width="700">
